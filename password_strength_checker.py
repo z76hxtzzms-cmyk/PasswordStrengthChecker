@@ -10,41 +10,62 @@ def check_strength(password):
     # Counter variable to keep track of password strength score.
     counter = 0
 
+    # Update: Created a dictionary called results to store results of each password 
+    # requirement check. This will be used in the UI to display which requirements
+    # were met and which were not. This is also to make our UI look nicer and more
+    # informative to the user (me).
+
+    results = {
+        "length_8": False,
+        "length_12": False,
+        "has_upper": False,
+        "has_lower": False,
+        "has_number": False,
+        "has_special": False
+    }
+
     # REMOVED PASSWORD INPUT, GUI will handle this instead. 
 
     # ---- Statements Below Will Check for Password Strength ----
 
     # If found in common passwords, exit.
     if password in common_passwords:
-        return 0, "Too Common", "red"
-
+        return 0, "Too Common", "red", results
+    
 
     # Check for length. If less than 8, exit, else, do the other checks.
     if len(password) >= 12:
         counter+=2
+        results["length_12"] = True
+        results["length_8"] = True
     elif 8 <= len(password) < 12:
         counter+=1
+        results["length_8"] = True
     else:
-        return 0, "Too Short", "red"
+        return 0, "Too Short", "red", results
 
     # Check password for numbers.
 
     if re.search(r'\d', password):
         counter+=1
+        results["has_number"] = True
 
     # Check password for capital letters
 
     if re.search(r"[A-Z]", password):
         counter+=1
+        results["has_upper"] = True
 
     # Check password for lowercase letters
 
     if re.search(r"[a-z]", password):
         counter+=1
+        results["has_lower"] = True
 
     # Check password for special characters
     if re.search(r"[!@#$%^&*]", password):
         counter+=1
+        results["has_special"] = True
 
     # ---- Statements Below Will Report Password Strengh 0-6 ----
 
@@ -65,4 +86,4 @@ def check_strength(password):
         rating = "Weak"
         color = "red"
 
-    return counter, rating, color
+    return counter, rating, color, results
