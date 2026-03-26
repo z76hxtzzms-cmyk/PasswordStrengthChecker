@@ -19,10 +19,14 @@ if password in common_passwords:
 
 
 # Moved length check higher. Should be priortized to at least have 8 characters
-if len(password) > 8:
-    print("Password is 8+ characters long, +1")
+if len(password) >= 12:
+    print("Password is 12+ characters, +2")
+    counter+=2
+elif 8 <= len(password) < 12:
+    print("Password is 8+ characters, +1")
+    counter+=1
 else:
-    print("Password is less than 8 characters long! Please pick a better password")
+    print("Password must be at least 8 characters!")
     exit()
 
 # Check if password has at least one number, if so increment
