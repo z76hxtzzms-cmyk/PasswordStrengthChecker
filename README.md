@@ -2,7 +2,7 @@
 
 A Python desktop application that analyzes password strength in real time using regex pattern matching and security best practices.
 
-Built as part of my cybersecurity learning journey as a first-year CIS student at Cal Poly Pomona.
+Built as part of my cybersecurity learning journey as a first-year CIS student at Cal Poly Pomona. I also do not trust other password checkers, so I decided to create my own. 
 
 ---
 
