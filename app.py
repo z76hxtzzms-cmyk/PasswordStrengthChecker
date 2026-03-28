@@ -18,9 +18,11 @@ def show_results():
                            strength_label=strength_label, 
                            color=color,
                            results=results)
-# TODO: With the results variable, we will change CSS elements to match the
-# results of the password strength check. For example if color is red, we change
-# something in there to be red, etc. 
+
+@app.route("/generate_password")
+def genPassword():
+    password = password_strength_checker.generatePassword()
+    return render_template("generate_password.html", password=password)
 
 if __name__ == "__main__":
     app.run(debug=True)
