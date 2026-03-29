@@ -2,7 +2,8 @@
 
 A Python web application that analyzes password strength in real time using 
 regex pattern matching and security best practices. Also includes a built-in 
-secure password generator.
+secure password generator. A new implementation was a password save to file for
+personal use.
 
 Built as part of my cybersecurity learning journey as a first-year CIS student 
 at Cal Poly Pomona. I do not trust other password checkers, so I decided to 
